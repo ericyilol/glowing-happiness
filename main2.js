@@ -49,6 +49,8 @@ window.addEventListener("DOMContentLoaded", function() {
                 
                 
         });
+        
+        // click the confirm button
         confirm.addEventListener("click", function() {
 //                context.clearRect(0, 0, 640, 480);
                 video.style.display="block";
@@ -60,6 +62,7 @@ window.addEventListener("DOMContentLoaded", function() {
                 ajax.open("POST","testsave.php",false);
                 ajax.setRequestHeader("Content-Type", "application/upload");
                 ajax.send(dataurl);
+                
             
         });
         
@@ -68,26 +71,3 @@ window.addEventListener("DOMContentLoaded", function() {
 }, false);
 
 
-/**
- * Convert an image 
- * to a base64 string
- * @param  {String}   url         
- * @param  {Function} callback    
- * @param  {String}   [outputFormat=image/png]           
- */
-function convertImgToBase64(url, callback, outputFormat) {
-    var canvas = document.createElement('CANVAS'),
-            ctx = canvas.getContext('2d'),
-            img = new Image;
-    img.crossOrigin = 'Anonymous';
-    img.onload = function () {
-        var dataURL;
-        canvas.height = img.height;
-        canvas.width = img.width;
-        ctx.drawImage(img, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback.call(this, dataURL);
-        canvas = null;
-    };
-    img.src = url;
-}

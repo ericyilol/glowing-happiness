@@ -12,8 +12,24 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
+            $myfile = fopen("journal/328.txt", "r") or die("Unable to open file!");
+            $text = fread($myfile,filesize("journal/328.txt"));
+            fclose($myfile);
+            echo $text.$text."2";
+            
+            
+            
         ?>
         
-        <img id="month" src="img/building.png">
+        <form>
+        First name:<br>
+        <textarea id = "journal" name="textarea" rows="10" cols="50">Write something here</textarea>
+        <br>
+        </form>
+        <button id = "save"> Save </button>
+        <script src="journal.js" type="text/javascript"></script>
+        
+        <!--<img id="month" src="img/building.png">-->
     </body>
+    
 </html>
